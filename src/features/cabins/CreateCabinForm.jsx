@@ -46,7 +46,7 @@ const Error = styled.span`
   color: var(--color-red-700);
 `;
 
-function CreateCabinForm({ cabinToUpdate = {} }) {
+function CreateCabinForm({ cabinToUpdate = {}, onCloseModal }) {
   const { id: updateId, ...updateValues } = cabinToUpdate;
 
   // 1. Check if it Update Current Cabin or Creating new one
@@ -56,7 +56,6 @@ function CreateCabinForm({ cabinToUpdate = {} }) {
   const {
     register,
     handleSubmit,
-    reset,
     getValues,
     formState: { errors },
   } = useForm({ defaultValues: isUpdateSession ? updateValues : {} });
@@ -73,16 +72,18 @@ function CreateCabinForm({ cabinToUpdate = {} }) {
     isUpdateSession
       ? updateCabin(
           { newCabinData: { ...data, image }, id: updateId },
-          { onSuccess: () => reset() }
+          { onSuccess: () => onCloseModal?.() }
         )
-      : createCabin({ ...data, image }, { onSuccess: () => reset() });
+      : createCabin({ ...data, image }, { onSuccess: () => onCloseModal?.() });
   }
   function onError(errors) {
     console.log(errors);
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmitForm, onError)}>
+    <Form
+      onSubmit={handleSubmit(onSubmitForm, onError)}
+      type={onCloseModal ? 'modal' : 'regular'}>
       <FormRow>
         <Label htmlFor="name">Cabin name</Label>
         <Input
@@ -173,7 +174,10 @@ function CreateCabinForm({ cabinToUpdate = {} }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button
+          variation="secondary"
+          type="reset"
+          onClick={() => onCloseModal?.()}>
           Cancel
         </Button>
         <Button disabled={isWorking}>
