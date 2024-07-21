@@ -10,7 +10,6 @@ function BookingTable() {
 
   if (isLoading) return <Spinner />;
 
-  console.log();
   return (
     <Menus>
       <Table columns="0.6fr 2fr 2.4fr 1.4fr 1fr 3.2rem">
