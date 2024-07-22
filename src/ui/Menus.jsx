@@ -73,8 +73,12 @@ function Menus({ children }) {
   const [openId, setOpenId] = useState('');
   const [position, setPosition] = useState(null);
 
-  const close = () => setOpenId('');
-  const open = (x) => setOpenId(x);
+  const close = () => {
+    setOpenId('');
+  };
+  const open = (x) => {
+    setOpenId(x);
+  };
 
   return (
     <MenusContext.Provider
