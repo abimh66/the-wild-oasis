@@ -51,7 +51,7 @@ function CabinRow({ cabin }) {
 
   // const [showForm, setShowForm] = useState(false);
   const { isDeleting, deleteCabin } = useDeleteCabin();
-  const { isCreating, createCabin } = useCreateCabin();
+  const { createCabin } = useCreateCabin();
 
   function handleCopy() {
     createCabin({
