@@ -1,4 +1,4 @@
-# Fast React Pizza
+# The Wild Oasis
 
 This project based on React Udemy Course by Jonas Schmedtmann. [(Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux, Tailwind, advanced patterns)](https://www.udemy.com/course/the-ultimate-react-course/)
 
@@ -22,7 +22,7 @@ The Wild Oasis is Hotel Management System App. It provides a comprehensive solut
 
 ### Screenshot
 
-**Tampilan Desktop**
+**Desktop View**
 ![Tampilan Desktop](./screenshot/desktop-1.png)
 ![Tampilan Desktop](./screenshot/desktop-2.png)
 
